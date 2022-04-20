@@ -1,0 +1,152 @@
+<html>
+<head>
+<title>
+	Prediction
+</title>
+<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+<style>
+		* {
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Montserrat' ;
+		}
+		
+		.header {	
+			top:0;	
+			margin:0px;
+			left: 0px;
+			right: 0px;
+			position: fixed;
+			background-color: black;
+			color: white;
+			box-shadow: 0px 8px 4px grey;
+			overflow: hidden;
+			padding: 15px;
+			font-size: 2vw;
+			width: 100%;
+			text-align: left;
+			padding-left: 100px;
+			opacity:0.9;
+		}
+		.header_text{
+			font-size:40px;
+			text-align:center;
+		}
+		.content{
+		margin-top:100px;
+		}
+		.text{
+			font-size:20px;
+			margin-top:10px;
+			text-align:center;
+		}
+		input[type=number], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+		input[type=text], select {
+  width: 50%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+input[type=submit] {
+  width: 50%;
+  background-color: #000000;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #5d6568;
+  color:#ffffff;	
+  border-color:black;
+}
+form{
+margin-top:20px;
+}
+.result{
+color:black;
+margin-top:30px;
+margin-bottom:20px;
+font-size:25px;
+color:red;
+}
+</style>	
+</head>
+<body align=center>
+<div class="header">
+		<div>Stroke Prediction </div>
+</div>
+<div class="content">
+<div class="header_text">Stroke Prediction</div>
+<div class="text">Fill in and below details to predict whether a person might get a stroke.</div>
+<div class="result">
+  {{ prediction_text }}
+  </div>
+<form action="{{ url_for('y_predict') }}" method="POST">
+    <select name="Gender">
+        <option disabled="disabled" selected="selected">Gender</option>
+        <option value="f">Female</option>
+         <option value="m">Male</option>
+         <option value="o">Others</option>
+    </select>
+    <input type="number" id="age" name="Age" placeholder="Age">
+    <select name="Hypertension">
+        <option disabled="disabled" selected="selected">Hypertension</option>
+        <option value="y">Yes</option>
+         <option value="n">No</option>
+    </select>
+    <select name="heart_disease">
+        <option disabled="disabled" selected="selected">Heart Disease</option>
+        <option value="y">Yes</option>
+         <option value="n">No</option>
+    </select>
+    <select name="ever_married">
+        <option disabled="disabled" selected="selected">Ever Married</option>
+        <option value="y">Yes</option>
+         <option value="n">No</option>
+    </select>
+    <select name="work_type">
+        <option disabled="disabled" selected="selected">Work Type</option>
+        <option value="pvt">Private</option>
+        <option value="self">Self-employed</option>
+        <option value="gvt">Govt_job</option>
+        <option value="ch">children</option>
+        <option value="unemp">Never Worked</option>
+    </select>
+    <select name="Residence_type">
+        <option disabled="disabled" selected="selected">Residence Type</option>
+        <option value="urban">Urban</option>
+         <option value="rural">Rural</option>
+    </select>
+	
+    <input type="number" step="any" id="avg_glucose_level" name="avg_glucose_level" placeholder="Avg Glucose Level">
+    <input type="number" step="any" id="bmi" name="BMI" placeholder="BMI">
+    <select name="smoking_status">
+        <option disabled="disabled" selected="selected">Smoking Status</option>
+        <option value="for">Formerly smoked</option>
+        <option value="ns">Never smoked</option>
+        <option value="s">Smokes</option> 
+    </select>
+    
+    <input type="submit" value="Submit">
+  </form>
+  
+</div>
+</body>
+</html>
